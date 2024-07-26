@@ -1,0 +1,28 @@
+type Todo {
+    id: ID!
+    todo: String!
+    user: User! @belongsTo
+    is_done: Int!
+}
+
+type Query {
+    todos: [Todo!]! @all
+}
+
+input CreateTodoInput {
+    todo: String!
+    user: CreateUserBelongsTo
+}
+
+input CreateUserInput {
+    name: String!
+}
+input CreateUserBelongsTo {
+    connect: ID
+    create: CreateUserInput
+}
+extend type Mutation {
+    updateTodo(id: ID!, todo: String!, is_done: Int!): Todo! @update
+    deleteTodo(id: ID! @whereKey): Todo! @delete
+    createTodo(input: CreateTodoInput! @spread): Todo! @create
+}
