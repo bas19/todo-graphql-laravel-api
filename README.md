@@ -1,4 +1,4 @@
-# Nuxt Vuetify Todo App
+# Laravel with GraphQL
 
 Todo - GraphQL API
 
